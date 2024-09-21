@@ -15,14 +15,23 @@ public class CommandeService {
     public Commande findByRef(String ref) {
         return commandeDao.findByRef(ref);
     }
+    public Commande findByCode(String code) {
+        return commandeDao.findByCode(code);
+    }
 
     @Transactional
+    public int deleteByCode(String code) {
+        int res1 = paiementDao.deleteByCommandeRef(ref);
+        int res2 = commandeDao.deleteByCode(code);
+        return res1 + res2;
+    }
+
+   @Transactional
     public int deleteByRef(String ref) {
         int res1 = paiementDao.deleteByCommandeRef(ref);
         int res2 = commandeDao.deleteByRef(ref);
         return res1 + res2;
     }
-
 
     public List<Commande> findByRefLikeAndTotalGreaterThan(String ref, double total) {
         return commandeDao.findByRefLikeAndTotalGreaterThan(ref, total);
@@ -61,7 +70,7 @@ public class CommandeService {
             return 1;
         }
 
-
+ 
     }
 
     @Autowired

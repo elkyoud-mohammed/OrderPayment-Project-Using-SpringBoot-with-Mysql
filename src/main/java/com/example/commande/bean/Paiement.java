@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 @Entity
 public class Paiement {
-    @Id
+    @Id 
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String code;

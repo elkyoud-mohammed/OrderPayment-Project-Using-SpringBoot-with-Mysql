@@ -10,6 +10,8 @@ import java.util.List;
 public interface CommandeDao extends JpaRepository<Commande, Long> {
        Commande findByRef(String ref);
        int deleteByRef(String ref);
+        Commande findByCode(String code);
+       int deleteByCode(String code);
        List<Commande> findByRefLikeAndTotalGreaterThan(String ref , double total);
 
 }

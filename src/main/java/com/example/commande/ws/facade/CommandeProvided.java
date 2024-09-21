@@ -24,6 +24,18 @@ public class CommandeProvided {
     public int deleteByRef(@PathVariable String ref) {
         return service.deleteByRef(ref);
     }
+    
+    @GetMapping("/ref/{ref}")
+    public CommandeDto findByCode(@PathVariable String code) {
+        Commande bean = service.findByCode(code);
+        CommandeDto dto = converter.toDto(bean);
+        return dto;
+    }
+
+    @DeleteMapping("/ref/{ref}")
+    public int deleteByCode(@PathVariable String code) {
+        return service.deleteByCode(code);
+    }
 
     @GetMapping("/ref/{ref}/total/{total}")
     public List<CommandeDto> findByRefLikeAndTotalGreaterThan(@PathVariable String ref,@PathVariable double total) {

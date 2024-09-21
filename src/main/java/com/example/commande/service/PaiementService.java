@@ -20,7 +20,14 @@ public class PaiementService {
     public int deleteByCode(String code) {
         return paiementDao.deleteByCode(code);
     }
+ public Paiement findByRef(String ref) {
+        return paiementDao.findByRef(ref);
+    }
 
+    @Transactional
+    public int deleteByRef(String ref) {
+        return paiementDao.deleteByCode(code);
+    }
 
     @Deprecated
     public Paiement getOne(Long aLong) {
